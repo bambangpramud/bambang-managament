@@ -1,0 +1,8 @@
+<ngb-toast
+style="position:fixed; z-index:999; right:30px; top:30px;" 
+*ngIf="toasterService.showToast" header="Hello"
+[autohide]="false"
+(hidden)="toasterService.showToast=false"
+>
+{{toasterService.message}}
+</ngb-toast>
