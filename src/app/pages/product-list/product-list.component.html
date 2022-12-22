@@ -26,6 +26,7 @@
                             <th>Discount</th>
                             <th>Stock</th>
                             <th>Brand</th>
+                            <th>QR</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,7 @@
                                 <td>{{p.discountPercentage}}%</td>
                                 <td>{{p.stock}}</td>
                                 <td>{{p.brand}}</td>
+                                <td><qr-code [value]="p.title"> </qr-code></td>
                        
 
                         </tr>
