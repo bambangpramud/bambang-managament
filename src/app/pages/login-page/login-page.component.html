@@ -4,17 +4,34 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Sign In</h4>
-                    <div class="mb2">
-                        <label class="form-label">Username</label>
-                        <input type="text" [(ngModel)]="user.username" class="form-control">
+                    <form [formGroup]="requiredForm" (ngSubmit)="onLogin()">
+                        <div class="mb2">
+                            <label class="form-label">Username</label>
+                            <input type="text" [(ngModel)]="user.username" formControlName="username" class="form-control">
+                        </div>
+                        <div
+                            *ngIf="requiredForm.controls['username'].invalid&&
+                            requiredForm.controls['username'].touched" class="form-text">
+                            <span class="text-danger" *ngIf="requiredForm.controls['username'].errors?.['required']">
+                                *required
+                            </span> 
+                        </div>
+                        <div class="mb2">
+                            <label class="form-label">Password</label>
+                            <input type="password" [(ngModel)]="user.password" formControlName="password" class="form-control">
+                        </div>
+                        <div
+                        *ngIf="requiredForm.controls['password'].invalid&&
+                        requiredForm.controls['password'].touched" class="form-text">
+                        <span class="text-danger" *ngIf="requiredForm.controls['password'].errors?.['required']">
+                            *required
+                        </span> 
                     </div>
-                    <div class="mb2">
-                        <label class="form-label">Password</label>
-                        <input type="password" [(ngModel)]="user.password" class="form-control">
-                    </div>
-                    <div class="mb2">
-                        <button (click)="onLogin()" class="btn btn-primary">Sign In</button>
-                    </div>
+                        <div class="mb2 mt-3">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
