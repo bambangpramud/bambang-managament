@@ -1,6 +1,51 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-8"></div>
+        <div class="col-md-4">
+           <app-user-form #uf [user]="user"></app-user-form>
+           <!-- <app-user-form #uf ></app-user-form> -->
+        </div>
+        <div class="col-md-8">
+            <div *ngIf="users.length===0" class="card">
+                <div class="card-header">Users</div>
+                <div class="card-body">
+                    <h5 class="card-title">Bray, belum ada users nih</h5>
+                    <p class="card-text">cek form sebelah untuk buat user baru</p>
+                    <a href="#" class="btn btn-primary">New Users</a>
+                </div>
+            </div>
+            <div *ngIf="users.length>0" class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- TODO ADD DETAIL -->
+                        <tr *ngFor="let p of users" (click)="uf.setUser(p)"  >
+                           
+                                <td>{{p.firstName+" "+p.lastName}}</td>
+                                <td>{{p.age}}</td>
+                                <td>{{p.gender}}</td>
+                                <td>{{p.email}}</td>
+                                <td>{{p.phone}}</td>
+                       
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
 </div>

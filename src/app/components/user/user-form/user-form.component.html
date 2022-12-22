@@ -1,1 +1,66 @@
-<p>user-form works!</p>
+<div class="card">
+
+    <h5 class="card-header" *ngIf="!user.username">New user</h5>
+    <h5 class="card-header" *ngIf="user.username">{{user.username}}</h5>
+    <ul class="list-group list-group-flush" *ngIf="isConfirmDelete===false">
+        <li class="list-group-item">
+            <!-- <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" [(ngModel)]="user.username" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" [(ngModel)]="user.password" class="form-control" />
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" [(ngModel)]="user.firstName" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" [(ngModel)]="user.lastName" class="form-control" />
+            </div>
+        </li>
+        <li (click)="showToggle()" *ngIf="!showMore" class="list-group-item">More</li>
+        <li (click)="showToggle()" *ngIf="showMore" class="list-group-item">Hide</li>
+        <li  *ngIf="showMore" class="list-group-item">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" [(ngModel)]="user.email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" [(ngModel)]="user.phone" class="form-control" max="5" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">age</label>
+                <input type="number" [(ngModel)]="user.age" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <input type="text" [(ngModel)]="user.gender" class="form-control" />
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="mb-3 mt-3" *ngIf="!user.id">
+                <button class="btn btn-primary"  (click)="onCreate()">Save</button>
+            </div>
+            <div class="mb-3 mt-3" *ngIf="user.id">
+                <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+                <button class="btn btn-warning" (click)="save()">cancel</button>
+                <button class="btn btn-danger" (click)="isConfirmDelete=true">delete</button>
+            </div>
+        </li>
+    </ul>
+    <ul class="list-group list-group-flush" *ngIf="user && isConfirmDelete">
+        <li class="list-group-item">
+            Anda yakin ingin menghapus data <strong>{{user.username}}</strong>
+        </li>
+        <li class="list-group-item">
+            <div class="btn-group mt-3 mb-3" role="group" aria-label="Basic mixed styles example">
+                <button (click)="onDelete()" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Yes</button>
+                <button (click)="isConfirmDelete=false" class="btn btn-danger"><i class="bi bi-trash3-fill"></i> No</button>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -16,7 +16,7 @@ daftarFitur:any=[
   {
     "title":"User Management",
     "image":"https://picsum.photos/200/90?random=2",
-    "link":""
+    "link":"/user"
   },
   {
     "title":"Sales Management",
